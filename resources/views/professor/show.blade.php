@@ -1,0 +1,1 @@
+{{-- mostra i dettagli di un singolo professore --}}
