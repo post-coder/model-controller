@@ -9,6 +9,15 @@ use Illuminate\Http\Request;
 class PageController extends Controller
 {
     
-    
+    // creo una funzione *pubblica* chiamata index() in cui ci inserisco la logica che voglio eseguire
+    public function index() {
+        return view('home');
+    }
+
+
+
+    public function showMovie() {
+        return view('film');
+    }
 
 }
