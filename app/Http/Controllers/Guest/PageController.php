@@ -12,7 +12,16 @@ class PageController extends Controller
     
     // creo una funzione *pubblica* chiamata index() in cui ci inserisco la logica che voglio eseguire
     public function index() {
-        return view('home');
+
+        // preleviamo solo un film specifico dal DB
+        // il metodo ->first() ci preleva il primo elemento risultante dalla query
+        // $movie = Movie::where('id', 4)->first();
+
+        $movies = Movie::where('id', '>', 1)->orderBy('title')->get();
+
+
+        // dd($movie);
+        return view('home', compact('movies'));
     }
 
 
@@ -26,7 +35,21 @@ class PageController extends Controller
 
         // dd($movies);
 
-        return view('film', compact('movies'));
+        return view('allFilms', compact('movies'));
+    }
+
+
+    public function addMovie() {
+        // codice per aggiungere un libro
+
+        // creiamo un nuovo film
+        $movie = new Movie();
+        $movie->title = "Parasite";
+        $movie->description = "Una famiglia coreana cerca rivalsa tramite imbroglio";
+        
+        $movie->save();
+
+        return "pagina per aggiugnere libro";
     }
 
 }
