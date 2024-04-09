@@ -4,6 +4,7 @@
 namespace App\Http\Controllers\Guest;
 
 use App\Http\Controllers\Controller;
+use App\Models\Movie;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -17,7 +18,15 @@ class PageController extends Controller
 
 
     public function showMovie() {
-        return view('film');
+
+        // preleviamo tutti i film dalla tabella movies
+
+        // il metodo all() ci restituisce tutte le righe della tabella collegata al Model
+        $movies = Movie::all();
+
+        // dd($movies);
+
+        return view('film', compact('movies'));
     }
 
 }
